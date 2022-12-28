@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="onlyOdd = !onlyOdd">
+        Only show odd numbers
+      </button>
+      <br /><br />
+      <ul class="list-group">
+        <div *appUnless="onlyOdd">
+          <li
+            *ngFor="let odd of oddNumbers"
+            [ngClass]="{ odd: odd % 2 !== 0 }"
+            class="list-group-item"
+          >
+            {{ odd }}
+          </li>
+        </div>
+        <!-- <div *ngIf="onlyOdd">
+          <li
+            *ngFor="let even of evenNumbers"
+            [ngClass]="{ odd: even % 2 !== 0 }"
+            class="list-group-item"
+          >
+            {{ even }}
+          </li>
+        </div> -->
+        <div *appUnless="!onlyOdd">
+          <li
+            *ngFor="let even of evenNumbers"
+            [ngClass]="{ odd: even % 2 !== 0 }"
+            class="list-group-item"
+          >
+            {{ even }}
+          </li>
+        </div>
+      </ul>
+      <p appBasicHiglight>This is a basic higlight directive</p>
+      <p appBetterHighlight>This is a better higlight directive</p>
+      <p
+        appBetterHighlight
+        [defaultColor]="'yellow'"
+        [highlightedColor]="'teal'"
+      >
+        This is a better higlight directive
+      </p>
+    </div>
+  </div>
+</div>
